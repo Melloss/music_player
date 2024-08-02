@@ -816,14 +816,15 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 20.sh,
             child: Slider(
               /// Set the initial value of the slider to the current sound level.
-              value: position.inSeconds.toDouble(),
+              value: soundLevel,
 
               /// Set the maximum value of the slider to the duration of the music track.
-              max: duration.inSeconds.toDouble(),
+              max: 100,
               onChanged: (value) async {
-                /// Seek to the specified position in the music track.
-                Duration newDuration = Duration(seconds: value.toInt());
-                assetsAudioPlayer.seek(newDuration);
+                setState(() {
+                  soundLevel = value;
+                });
+                assetsAudioPlayer.setVolume((value / 100));
               },
             ),
           ),
