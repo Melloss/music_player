@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 /// Represents a music track with its details.
 class Music {
   /// The unique identifier for the music track.
@@ -94,7 +96,8 @@ class Music {
 /// This function takes a file ID as input and returns a URL that can be used
 /// to access the corresponding music file.
 String getUrlAddress(String fileID) {
-  return 'https://www.googleapis.com/drive/v3/files/$fileID?alt=media&key=AIzaSyCAtbRmPnOklzrDRYZe4LBemLzNTjx80pI&v=.mp3';
+  final apiKey = dotenv.env['API_KEY'];
+  return 'https://www.googleapis.com/drive/v3/files/$fileID?alt=media&key=$apiKey=.mp3';
 }
 
 /// A list of `Music` objects representing the available music tracks.

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:music_player/config/routing.dart'; // Imports routing configuration
 import 'package:music_player/config/theme.dart'; // Imports theme configuration
 import 'package:responsive_builder/responsive_builder.dart'; // Imports responsive builder for adaptive UI
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// The main entry point for the music player application.
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MainApp()); // Runs the MainApp widget
 }
 
